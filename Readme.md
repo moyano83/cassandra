@@ -7,5 +7,5 @@
 ## NOTES
 
 - clustering batch: Multiple write statements can be sent in a single batch, Cassandra guarantees that if any statement in a batch succeeds, all of it will.
-- Conditional inserts: provides a way to ensure lightweight transaction in insert statements by adding 'IF NOT EXISTS' at the end of the statement. The result contains an applied column that tell us if the insert was successful or not, it is also possible to put another condition after the IF, for example IF value = 'XXX'
+- Conditional inserts: provides a way to ensure lightweight transaction in insert statements by adding ``IF NOT EXISTS`` at the end of the statement. The result contains an applied column that tell us if the insert was successful or not, it is also possible to put another condition after the IF, for example ``IF value = 'XXX'``
 - Collections are available in Cassandra, insert operations are upserts. to add a value to a set we use the syntax {'value'} to add it to a list ['value']
