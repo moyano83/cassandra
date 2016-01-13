@@ -13,25 +13,22 @@
 ### Collections
 Collections are available in Cassandra, insert operations are upserts.
 - Adding values:
-
-	To add a value to a set we use the syntax ``{'value'}`` 
-
-	To add it to a list ``['value']``
+  To add a value to a set we use the syntax ``{'value'}`` 
+  To add it to a list ``['value']``
 - Searching for values:
-
-	To search in a List, we can access the element by ``list_name[0]``
+  To search in a List, we can access the element by ``list_name[0]``
 - Deletion 
-
-	To delete a value in a set we can do the following: ``UPDATE "table" SET set_column=set_column -{value}``
-
-	In a list we can do the above with brackets or do it using an index ``DELETE set_column[0] FROM set_index WHERE ...``
+  To delete a value in a set we can do the following: ``UPDATE "table" SET set_column=set_column -{value}``
+  In a list we can do the above with brackets or do it using an index ``DELETE set_column[0] FROM set_index WHERE ...``
 - It is possible to put a secondary index in a collection column and search on it using the sintax:
 ``SELECT * FROM "table" WHERE "index_name" CONTAINS 'value'``
-
-	On a map collection, this allows to search in the values of the map, to create the secondary index on the keys and search on them, simply use:
-
+  On a map collection, this allows to search in the values of the map, to create the secondary index on the keys and search on them, simply use:
+	
 ``
 CREATE INDEX ON "table" (KEYS "index_name");
 SELECT * FROM "table" WHERE "index_name" CONTAINS KEY value';
 ``
-
+- Limitations with collections:
+* Any given collection can contain no more than 64 Kb of data
+* You cannot read collections when selecting multiple rows using a ``WHERE…IN`` clause, but it is legal to retrieve collections in range queries.
+* 
