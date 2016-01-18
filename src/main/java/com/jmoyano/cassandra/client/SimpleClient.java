@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.ResultSetFuture;
 import com.datastax.driver.core.Session;
+import com.datastax.driver.core.Statement;
 
 /**
  * Hello world!
@@ -41,5 +44,17 @@ public class SimpleClient
     
     public ResultSet execute(String cql){
     	return session.execute(cql);
+    }
+    
+    public ResultSet execute(Statement cql){
+    	return session.execute(cql);
+    }
+    
+    public ResultSetFuture executeAsync(Statement cql){
+    	return session.executeAsync(cql);
+    }
+    
+    public PreparedStatement getPreparedStatement(String query){
+    	return session.prepare(query);
     }
 }
